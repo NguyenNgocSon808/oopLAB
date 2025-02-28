@@ -46,5 +46,7 @@ public class DaysDisplay {
         } else {
             System.out.println("Invalid month");
         }
+
+        keyboard.close();
     }
 }
