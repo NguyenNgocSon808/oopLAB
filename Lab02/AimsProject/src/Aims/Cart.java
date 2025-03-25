@@ -40,4 +40,11 @@ public class Cart {
             System.out.println("Cart is empty. Cannot remove DVD.");
         }
     }
+    public float TotalCost(){
+        float total = 0;
+        for(int i = 0; i < qtyOrdered; i++){
+            total += itemsOrdered[i].getCost();
+        }
+        return total;
+    }
 }
