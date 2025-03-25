@@ -55,4 +55,21 @@ public class Cart {
             System.out.println("Cart: " + itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getDirector() + ".");
         }
     }
+
+    public void addDVD(DigitalVideoDisc[] dvdLIST){
+        int i = 0;
+        while(dvdLIST[i] != null){
+            addDVD(dvdLIST[i]);
+            i++;
+        }
+    }
+    public void addDVD(DigitalVideoDisc[] dvdLIST, int argu){
+        for(int i = 0; i < argu; i++){
+            addDVD(dvdLIST[i]);
+        }
+    }
+    public void addDVD(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2){
+        addDVD(dvd1);
+        addDVD(dvd2);
+    }
 }
