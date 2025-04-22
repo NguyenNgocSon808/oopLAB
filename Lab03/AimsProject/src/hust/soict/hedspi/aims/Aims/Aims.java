@@ -1,5 +1,5 @@
 package hust.soict.hedspi.aims.Aims;
-import hust.soict.hedspi.aims.disc.*;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.cart.*;
 
 public class Aims {

@@ -1,6 +1,6 @@
 package hust.soict.hedspi.aims.cart;
 
-import hust.soict.hedspi.aims.disc.*;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 
 public class Cart {
     public final int MAX_NUMBERS_ORDERED = 20;
@@ -27,7 +27,7 @@ public class Cart {
                     found = true;
                         for (int j = i; j < qtyOrdered - 1; j++) {
                         itemsOrdered[j] = itemsOrdered[j + 1];
-                        itemsOrdered[j].setID(j+1);
+                        itemsOrdered[j].setId(j+1);
                     }
                     itemsOrdered[qtyOrdered - 1] = null; 
                     qtyOrdered--;
