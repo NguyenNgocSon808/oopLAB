@@ -11,6 +11,9 @@ public class DigitalVideoDisc {
     public String getTitle() {
         return title;
     }
+    public void setTitle(String title) {
+        this.title = title;
+    }
     public String getCategory() {
         return category;
     }
@@ -22,6 +25,12 @@ public class DigitalVideoDisc {
     }
     public float getCost() {
         return cost;
+    }
+    public int getID() {
+        return id;
+    }
+    public void setID(int id) {
+        this.id = id;
     }
     public DigitalVideoDisc(String title) {
         nbDigitalVideoDiscs++; 
@@ -52,9 +61,6 @@ public class DigitalVideoDisc {
         this.length = length;
         this.cost = cost;
     }
-    public int getID() {
-        return id;
-    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -65,9 +71,6 @@ public class DigitalVideoDisc {
                title.equals(disc.title) &&
                ((category == null && disc.category == null) || (category != null && category.equals(disc.category))) &&
                ((director == null && disc.director == null) || (director != null && director.equals(disc.director)));
-    }
-    public void setTitle(String title) {
-        this.title = title;
     }
     @Override
     public String toString(){

@@ -27,6 +27,7 @@ public class Cart {
                     found = true;
                         for (int j = i; j < qtyOrdered - 1; j++) {
                         itemsOrdered[j] = itemsOrdered[j + 1];
+                        itemsOrdered[j].setID(j+1);
                     }
                     itemsOrdered[qtyOrdered - 1] = null; 
                     qtyOrdered--;
@@ -70,13 +71,13 @@ public class Cart {
     }
 
     public void print(){
-        System.out.println("***********************CART***********************");
+        System.out.println("**********************************CART**********************************");
 
         for(int i = 0; i < qtyOrdered; i++){
             System.out.println(itemsOrdered[i].toString());
         }
 
-        System.out.println("**************************************************");        
+        System.out.println("************************************************************************");        
     }
 
     public void SearchDVD(int id){
