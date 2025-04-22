@@ -1,4 +1,5 @@
 package hust.soict.hedspi.aims.cart;
+
 import hust.soict.hedspi.aims.disc.*;
 
 public class Cart {
@@ -51,12 +52,6 @@ public class Cart {
         return total;
     }
 
-    public void DisplayCart(){
-        for(int i = 0; i < qtyOrdered; i++){
-            System.out.println("Cart: " + itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getDirector() + ".");
-        }
-    }
-
     public void addDVD(DigitalVideoDisc[] dvdLIST){
         int i = 0;
         while(dvdLIST[i] != null){
@@ -72,5 +67,35 @@ public class Cart {
     public void addDVD(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2){
         addDVD(dvd1);
         addDVD(dvd2);
+    }
+
+    public void print(){
+        System.out.println("***********************CART***********************");
+
+        for(int i = 0; i < qtyOrdered; i++){
+            System.out.println(itemsOrdered[i].toString());
+        }
+
+        System.out.println("**************************************************");        
+    }
+
+    public void SearchDVD(int id){
+        for(int i = 0; i < qtyOrdered; i++){
+            if(itemsOrdered[i].isMatch(id)){
+                System.out.println(itemsOrdered[i].toString());
+                return;
+            }
+        }
+        System.out.println("No result matched");
+    }
+    
+    public void SearchDVD(String title){
+        for(int i = 0; i < qtyOrdered; i++){
+            if(itemsOrdered[i].isMatch(title)){
+                System.out.println(itemsOrdered[i].toString());
+                return;
+            }
+        }
+        System.out.println("No result matched");
     }
 }
