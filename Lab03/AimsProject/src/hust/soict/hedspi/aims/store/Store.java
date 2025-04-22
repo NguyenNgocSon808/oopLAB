@@ -1,6 +1,6 @@
 package hust.soict.hedspi.aims.store;
 
-import hust.soict.hedspi.aims.disc.*;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 
 public class Store {
     public DigitalVideoDisc[] itemsInStore = new DigitalVideoDisc[500];
@@ -20,7 +20,7 @@ public class Store {
             if (itemsInStore[i].equals(dvd)) {
                 for (int j = i; j < qtyInStore - 1; j++) {
                     itemsInStore[j] = itemsInStore[j + 1];
-                    itemsInStore[j].setID(j+1);
+                    itemsInStore[j].setId(j+1);;
                 }
                 itemsInStore[qtyInStore-1] = null;
                 qtyInStore--;
