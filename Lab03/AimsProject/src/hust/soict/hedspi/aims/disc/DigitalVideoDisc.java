@@ -11,7 +11,7 @@ public class DigitalVideoDisc {
     public String getTitle() {
         return title;
     }
-    public String getCategorry() {
+    public String getCategory() {
         return category;
     }
     public String getDirector() {
@@ -68,5 +68,23 @@ public class DigitalVideoDisc {
     }
     public void setTitle(String title) {
         this.title = title;
+    }
+    @Override
+    public String toString(){
+        return (id + ". DVD - " + this.getTitle() + 
+        " - " + this.getCategory() + 
+        " - " + this.getDirector() + 
+        " - " + this.getLength() + 
+        ": " + this.getCost() + ".");
+    }
+
+    public boolean isMatch(String title){
+        if(this.title == title) return true;
+        return false;
+    }
+
+    public boolean isMatch(int id){
+        if(this.id == id) return true;
+        return false;
     }
 }

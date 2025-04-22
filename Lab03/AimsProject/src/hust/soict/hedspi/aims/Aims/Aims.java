@@ -45,7 +45,7 @@ public class Aims {
         DigitalVideoDisc dvd13 = new DigitalVideoDisc("Shrek", "Animation", "Andrew Adamson", 90, 14.99f);
         anOrder.addDVD(dvd13);
 
-        anOrder.DisplayCart();
+        anOrder.print();
         System.out.println("Total cost is: " + anOrder.TotalCost());
 
         DigitalVideoDisc removeDVD1 = new DigitalVideoDisc("Shrek", "Animation", "Andrew Adamson", 90, 14.99f);
@@ -66,7 +66,6 @@ public class Aims {
         DigitalVideoDisc removeDVD6 = new DigitalVideoDisc("Shrek", "Animation", "Andrew Adamson", 90, 14.99f);
         anOrder.removeDVD(removeDVD6);
 
-        anOrder.DisplayCart();
         System.out.println("Total Cost: " + anOrder.TotalCost());
     }
 }
