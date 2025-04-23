@@ -36,4 +36,12 @@ public class Store {
         }
         return null;
     }
+    public Media searchByID(int ID){
+        for(Media media : itemsInStore){
+            if(media.getId() == ID){
+                return media;
+            }
+        }
+        return null;
+    }
 }

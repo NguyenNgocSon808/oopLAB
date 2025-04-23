@@ -62,7 +62,7 @@ public class Aims {
     }
 
     private static void viewStore() {
-        store.displayStore();
+        store.print();
         storeMenu();
     }
 
@@ -123,7 +123,6 @@ public class Aims {
             switch (choice) {
                 case 1:
                     cart.addMedia(media);
-                    System.out.println("Number of items in cart: " + cart.getItemsOrdered().size());
                     break;
                 case 2:
                     if (media instanceof Playable) {
@@ -143,7 +142,6 @@ public class Aims {
 
         if (media != null) {
             cart.addMedia(media);
-            System.out.println("Number of items in cart: " + cart.getItemsOrdered().size());
         } else {
             System.out.println("Media not found.");
         }
@@ -210,15 +208,11 @@ public class Aims {
                 int length = scanner.nextInt();
                 scanner.nextLine();
 
-                DigitalVideoDisc dvd = new DigitalVideoDisc(
-                        store.getItemsInStore().size() + 1,
-                        title, category, cost, length, director);
+                DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
                 store.addMedia(dvd);
                 break;
             case 2: // Book
-                Book book = new Book(
-                        store.getItemsInStore().size() + 1,
-                        title, category, cost);
+                Book book = new Book(title, category, cost);
                 System.out.print("Number of authors: ");
                 int numAuthors = scanner.nextInt();
                 scanner.nextLine();
@@ -233,10 +227,10 @@ public class Aims {
                 String artist = scanner.nextLine();
                 System.out.print("Director: ");
                 String cdDirector = scanner.nextLine();
+                System.out.print("Length: ");
+                int leng = scanner.nextInt();
 
-                CompactDisc cd = new CompactDisc(
-                        store.getItemsInStore().size() + 1,
-                        title, category, cost, artist, cdDirector);
+                CompactDisc cd = new CompactDisc(title, category, cdDirector, artist, leng, cost);
 
                 System.out.print("Number of tracks: ");
                 int numTracks = scanner.nextInt();
@@ -321,24 +315,13 @@ public class Aims {
             int id = scanner.nextInt();
             scanner.nextLine();
             boolean found = false;
-            for (Media media : cart.getItemsOrdered()) {
-                if (media.getId() == id) {
-                    System.out.println(media);
-                    found = true;
-                    break;
-                }
-            }
+            cart.searchByID(id);
             if (!found) System.out.println("No media found with ID: " + id);
         } else {
             System.out.print("Enter title: ");
             String title = scanner.nextLine();
             boolean found = false;
-            for (Media media : cart.getItemsOrdered()) {
-                if (media.getTitle().equalsIgnoreCase(title)) {
-                    System.out.println(media);
-                    found = true;
-                }
-            }
+            cart.searchByTitle(title);
             if (!found) System.out.println("No media found with title: " + title);
         }
     }
@@ -387,7 +370,6 @@ public class Aims {
 
     private static void placeOrder() {
         System.out.println("Order created. Your cart will be emptied.");
-        cart.getItemsOrdered().clear();
     }
 
     // Helper methods
