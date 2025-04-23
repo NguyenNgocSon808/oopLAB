@@ -1,6 +1,8 @@
 package hust.soict.hedspi.aims.cart;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 import hust.soict.hedspi.aims.media.*;
 
 public class Cart {
@@ -37,5 +39,27 @@ public class Cart {
         }
 
         System.out.println("************************************************************************");        
+    }
+    public Media searchByTitle(String title){
+        for(Media media : itemsOrdered){
+            if(media.isMatch(title)){
+                return media;
+            }
+        }
+        return null;
+    }
+    public Media searchByID(int ID){
+        for(Media media : itemsOrdered){
+            if(media.getId() == ID){
+                return media;
+            }
+        }
+        return null;
+    }
+    public void sortByCost(){
+        Collections.sort(itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+    }
+    public void sortByTitle(){
+        Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
     }
 }
