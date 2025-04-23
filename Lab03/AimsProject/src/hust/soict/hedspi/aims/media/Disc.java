@@ -30,4 +30,7 @@ public class Disc extends Media {
         this.director = director;
         this.length = length;
     }
+    public String toString(){
+        return null;
+    }
 }

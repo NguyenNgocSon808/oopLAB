@@ -50,4 +50,15 @@ public abstract class Media {
         this.category = category;
         this.cost = cost;
     }
+    public String toString(){
+        return null;
+    }
+    public boolean isMatch(int id){
+        if(this.getId() == id) return true;
+        return false;
+    }
+    public boolean isMatch(String title){
+        if(this.getTitle() == title) return true;
+        return false;
+    }
 }
