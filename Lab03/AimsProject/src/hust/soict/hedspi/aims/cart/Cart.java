@@ -38,24 +38,4 @@ public class Cart {
 
         System.out.println("************************************************************************");        
     }
-
-    public void SearchMedia(int id){
-        for(Media media : itemsOrdered){
-            if(media.isMatch(id)){
-                System.out.println(media.toString());
-                return;
-            }
-        }
-        System.out.println("No result matched");
-    }
-    
-    public void SearchMedia(String title){
-        for(Media media : itemsOrdered){
-            if(media.isMatch(title)){
-                System.out.println(media.toString());
-                return;
-            }
-        }
-        System.out.println("No result matched");
-    }
 }
