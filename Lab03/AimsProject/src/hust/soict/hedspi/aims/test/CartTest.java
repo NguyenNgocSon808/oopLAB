@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,6 +26,8 @@ public class CartTest {
         mediae.add(cd);
         mediae.add(dvd);
         mediae.add(book);
+
+        Collections.sort(mediae, Media.COMPARE_BY_COST_TITLE);
 
         // In thông tin từng media bằng toString()
         for (Media m : mediae) {

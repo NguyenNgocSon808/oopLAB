@@ -1,5 +1,9 @@
 package hust.soict.hedspi.aims.media;
 
+import java.util.Comparator;
+import hust.soict.hedspi.aims.comparator.*;
+import hust.soict.hedspi.aims.comparator.MediaComparatorByTitleCost;
+
 public abstract class Media {
     private static int nbMedia = 0;
     private int id;
@@ -71,4 +75,6 @@ public abstract class Media {
             && ((this.getCategory() == null && other.getCategory() == null) || (this.getCategory() != null && this.getCategory().equals(other.getCategory())))
             && Float.compare(other.getCost(), this.getCost()) == 0;
     }
+    public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
 }
