@@ -12,16 +12,16 @@ public class StoreTest {
         DigitalVideoDisc dvd4 = new DigitalVideoDisc("Inception", "Science Fiction", "Christopher Nolan", 148, 29.99f);
         DigitalVideoDisc dvd5 = new DigitalVideoDisc("The Godfather", "Crime", "Francis Ford Coppola", 175, 22.50f);
 
-        store.addDVD(dvd1);
-        store.addDVD(dvd2);
-        store.addDVD(dvd3);
-        store.addDVD(dvd4);
-        store.addDVD(dvd5);
+        store.addMedia(dvd1);
+        store.addMedia(dvd2);
+        store.addMedia(dvd3);
+        store.addMedia(dvd4);
+        store.addMedia(dvd5);
 
         store.print();
 
-        store.removeDVD(dvd1);
-        store.removeDVD(dvd4);
+        store.removeMedia(dvd1);
+        store.removeMedia(dvd4);
 
         store.print();
     }
