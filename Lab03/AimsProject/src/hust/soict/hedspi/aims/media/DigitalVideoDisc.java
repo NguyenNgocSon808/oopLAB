@@ -14,17 +14,6 @@ public class DigitalVideoDisc extends Disc implements Playable {
         super(title, category, director, length, cost);
     }
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        DigitalVideoDisc disc = (DigitalVideoDisc) obj;
-        return this.getLength() == disc.getLength() &&
-               Float.compare(disc.getCost(), this.getCost()) == 0 &&
-               this.getTitle().equals(disc.getTitle()) &&
-               ((this.getCategory() == null && disc.getCategory() == null) || (this.getCategory() != null && this.getCategory().equals(disc.getCategory()))) &&
-               ((this.getDirector() == null && disc.getDirector() == null) || (this.getDirector() != null && this.getDirector().equals(disc.getDirector())));
-    }
-    @Override
     public String toString(){
         return (this.getId() + ". DVD - " + this.getTitle() + 
         " - " + this.getCategory() + 

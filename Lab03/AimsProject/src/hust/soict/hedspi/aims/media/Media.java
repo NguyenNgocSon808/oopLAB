@@ -61,4 +61,14 @@ public abstract class Media {
         if(this.getTitle() == title) return true;
         return false;
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Media other = (Media) obj;
+        return this.title != null && this.title.equals(other.title)
+            && ((this.getCategory() == null && other.getCategory() == null) || (this.getCategory() != null && this.getCategory().equals(other.getCategory())))
+            && Float.compare(other.getCost(), this.getCost()) == 0;
+    }
 }
