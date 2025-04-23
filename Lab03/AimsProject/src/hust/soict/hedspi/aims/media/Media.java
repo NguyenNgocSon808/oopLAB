@@ -58,7 +58,7 @@ public abstract class Media {
         return false;
     }
     public boolean isMatch(String title){
-        if(this.getTitle() == title) return true;
+        if(this.title.equals(title)) return true;
         return false;
     }
     @Override
