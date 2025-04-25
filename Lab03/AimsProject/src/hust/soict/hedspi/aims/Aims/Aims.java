@@ -370,6 +370,7 @@ public class Aims {
 
     private static void placeOrder() {
         System.out.println("Order created. Your cart will be emptied.");
+        cart.emptyCart();
     }
 
     // Helper methods
