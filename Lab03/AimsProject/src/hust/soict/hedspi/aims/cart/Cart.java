@@ -62,4 +62,8 @@ public class Cart {
     public void sortByTitle(){
         Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
     }
+    public void emptyCart() {
+        itemsOrdered.clear();
+        System.out.println("The cart has been emptied.");
+    }  
 }
