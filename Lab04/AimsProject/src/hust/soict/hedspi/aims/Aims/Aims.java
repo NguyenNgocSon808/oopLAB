@@ -17,27 +17,62 @@ public class Aims {
 
     private static void initializeStore() {
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
+    	DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
+    	DigitalVideoDisc dvd3 = new DigitalVideoDisc("Inception", "Science Fiction", "Christopher Nolan", 148, 21.50f);
+    	DigitalVideoDisc dvd4 = new DigitalVideoDisc("Titanic", "Drama", "James Cameron", 195, 17.00f);
+    	DigitalVideoDisc dvd5 = new DigitalVideoDisc("Avengers: Endgame", "Action", "Anthony Russo", 181, 22.75f);
 
-        Book book1 = new Book("Aladin", "Animation", 18.99f);
-        book1.addAuthor("John Smith");
+    	// Books
+    	Book book1 = new Book("Aladin", "Fantasy", 18.99f);
+    	book1.addAuthor("John Smith");
 
-        CompactDisc cd1 = new CompactDisc("Thriller", "Pop", "Quincy Jones", "Michael Jackson", 42, 15.99f);
-        Track track1 = new Track("Thriller", 357);
-        Track track2 = new Track("Beat It", 258);
-        cd1.addTrack(track1);
-        cd1.addTrack(track2);
+	    Book book2 = new Book("Harry Potter", "Fantasy", 29.99f);
+	    book2.addAuthor("J.K. Rowling");
 
-        store.addMedia(dvd1);
-        store.addMedia(dvd2);
-        store.addMedia(book1);
-        store.addMedia(cd1);
+	    Book book3 = new Book("1984", "Dystopian", 15.00f);
+	    book3.addAuthor("George Orwell");
+
+	    Book book4 = new Book("The Hobbit", "Fantasy", 25.00f);
+	    book4.addAuthor("J.R.R. Tolkien");
+
+	    Book book5 = new Book("To Kill a Mockingbird", "Classic", 12.50f);
+	    book5.addAuthor("Harper Lee");
+
+	    // CDs
+	    CompactDisc cd1 = new CompactDisc("Thriller", "Pop", "Quincy Jones", "Michael Jackson", 42, 15.99f);
+	    cd1.addTrack(new Track("Thriller", 357));
+	    cd1.addTrack(new Track("Beat It", 258));
+
+	    CompactDisc cd2 = new CompactDisc("Divide", "Pop", "Ed Sheeran", "Ed Sheeran", 59, 13.99f);
+	    cd2.addTrack(new Track("Shape of You", 233));
+	    cd2.addTrack(new Track("Perfect", 263));
+
+	    CompactDisc cd3 = new CompactDisc("Abbey Road", "Rock", "George Martin", "The Beatles", 47, 18.00f);
+	    cd3.addTrack(new Track("Come Together", 259));
+	    cd3.addTrack(new Track("Something", 182));
+
+	    // Adding to store
+	    store.addMedia(dvd1);
+	    store.addMedia(dvd2);
+	    store.addMedia(dvd3);
+	    store.addMedia(dvd4);
+	    store.addMedia(dvd5);
+
+	    store.addMedia(book1);
+	    store.addMedia(book2);
+	    store.addMedia(book3);
+	    store.addMedia(book4);
+	    store.addMedia(book5);
+
+	    store.addMedia(cd1);
+	    store.addMedia(cd2);
+	    store.addMedia(cd3);
     }
 
     public static void showMenu() {
         while (true) {
-            printMenuHeader("AIMS");
-            System.out.println("1. View store");
+            printMenuHeader("Cưar hàng AIMS");
+            System.out.println("1. Xem cửa hàng");
             System.out.println("2. Update store");
             System.out.println("3. See current cart");
             System.out.println("0. Exit");
@@ -61,7 +96,7 @@ public class Aims {
         }
     }
 
-    private static void viewStore() {
+    private static void viewStore() {   
         store.print();
         storeMenu();
     }
