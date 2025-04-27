@@ -2,12 +2,25 @@ package hust.soict.hedspi.aims.screen.manager;
 
 import hust.soict.hedspi.aims.media.*;
 import javax.swing.*;
-import hust.soict.hedspi.aims.store.Store;
 import java.awt.*;
 import java.util.ArrayList;
+import hust.soict.hedspi.aims.store.Store;
 
-public class StoreManagerScreen {
+public class StoreManagerScreen extends JFrame{
     private Store store;
+    public StoreManagerScreen(Store store){
+        this.store = store;
+
+        Container cp = getContentPane();
+        cp.setLayout(new BorderLayout()); 
+        cp.add(createNorth(), BorderLayout.NORTH); 
+        cp.add(createCenter(), BorderLayout.CENTER);
+
+        setTitle("Store");
+        setSize(1024, 768); 
+        setLocationRelativeTo (null);
+        setVisible(true);
+    }
     JPanel createNorth() {
         JPanel north = new JPanel();
         north.setLayout(new BoxLayout(north, BoxLayout.Y_AXIS));
