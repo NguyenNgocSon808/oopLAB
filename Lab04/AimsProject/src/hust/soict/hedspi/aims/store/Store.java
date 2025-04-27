@@ -20,7 +20,7 @@ public class Store {
         }
     }
     public void print(){
-        System.out.println("**********************************CART**********************************");
+        System.out.println("*********************************STORE**********************************");
 
         for(Media media : itemsInStore){
             System.out.println(media.toString());
@@ -43,5 +43,8 @@ public class Store {
             }
         }
         return null;
+    }
+    public ArrayList<Media> getItemsInStore(){
+        return this.itemsInStore;
     }
 }

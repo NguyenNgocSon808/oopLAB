@@ -52,7 +52,7 @@ public class CompactDisc extends Disc implements Playable{
     }
     @Override
     public void play(){
-        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("Playing CD: " + this.getTitle());
         for(Track track : tracks){
             track.play();
         }
