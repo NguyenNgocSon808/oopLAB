@@ -8,9 +8,9 @@ import java.awt.*;
 public abstract class AddItemsScreen extends JFrame {
     private Store store;
 
-    protected JTextField titleField;
-    protected JTextField categoryField;
-    protected JTextField costField;
+    protected JTextField titleField = new JTextField(20);
+    protected JTextField categoryField = new JTextField(20);
+    protected JTextField costField = new JTextField(20);
 
     public AddItemsScreen(Store store) {
         this.store = store;
