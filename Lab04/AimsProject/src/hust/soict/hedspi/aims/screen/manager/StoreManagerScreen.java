@@ -29,16 +29,32 @@ public class StoreManagerScreen extends JFrame{
         return north;
     }
     JMenuBar createMenuBar() {
-        JMenu menu = new JMenu("Options");
-        menu.add(new JMenuItem("View store"));
-        JMenu smUpdateStore = new JMenu ("Update Store");
-        smUpdateStore.add(new JMenuItem("Add Book"));
-        smUpdateStore.add(new JMenuItem("Add CD"));
-        smUpdateStore.add(new JMenuItem("Add DVD"));
-        menu.add(smUpdateStore);
+        JMenu options = new JMenu("Options");
+
+        JMenuItem viewStore = new JMenuItem("View Store");
+        viewStore.addActionListener(e->{
+            new StoreManagerScreen(this.store);
+            dispose();
+        });
+
+        JMenu updateStore = new JMenu("Update Store");
+
+        JMenuItem addCD = new JMenuItem("Add CD");
+        addCD.addActionListener(e -> new AddCDScreen(store));
+        JMenuItem addBook = new JMenuItem("Add Book");
+        addBook.addActionListener(e -> new AddBookScreen(store));
+        JMenuItem addDVD = new JMenuItem("Add DVD");
+        addDVD.addActionListener(e -> new AddDVDScreen(store));
+        updateStore.add(addBook);
+        updateStore.add(addCD);
+        updateStore.add(addDVD);
+
+        options.add(viewStore);
+        options.add(updateStore);
+
         JMenuBar menuBar = new JMenuBar();
         menuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
-        menuBar.add(menu);
+        menuBar.add(options);
         return menuBar;
     }
     JPanel createHeader() {
@@ -57,9 +73,9 @@ public class StoreManagerScreen extends JFrame{
         center.setLayout(new GridLayout (3, 3, 2, 2));
 
         ArrayList<Media> mediaInStore = store.getItemsInStore();
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < mediaInStore.size(); i++) {
 
-            MediaStore cell = new MediaStore (mediaInStore.get(i));
+            MediaStore cell = new MediaStore(mediaInStore.get(i));
             center.add(cell);
         }
         return center;
