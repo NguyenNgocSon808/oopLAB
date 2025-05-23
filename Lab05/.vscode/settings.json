@@ -1,0 +1,19 @@
+{
+    "java.project.sourcePaths": [
+        "AimsProject\\src",
+        "GUIProject\\src\\hust\\soict\\hedspi\\painter"
+    ],
+    "java.project.referencedLibraries": [
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\GUIProject\\lib\\JavaFX\\jdk.jsobject.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\GUIProject\\lib\\JavaFX\\javafx.controls.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\GUIProject\\lib\\JavaFX\\javafx-swt.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\GUIProject\\lib\\JavaFX\\javafx.fxml.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\GUIProject\\lib\\JavaFX\\jfx.incubator.richtext.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\GUIProject\\lib\\JavaFX\\javafx.media.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\GUIProject\\lib\\JavaFX\\javafx.base.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\GUIProject\\lib\\JavaFX\\javafx.graphics.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\GUIProject\\lib\\JavaFX\\javafx.web.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\GUIProject\\lib\\JavaFX\\javafx.swing.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\GUIProject\\lib\\JavaFX\\jfx.incubator.input.jar"
+    ]
+}

@@ -14,7 +14,6 @@ public abstract class AddItemsScreen extends JFrame {
 
     public AddItemsScreen(Store store) {
         this.store = store;
-        setTitle("Add Item");
         setSize(400, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -27,7 +26,7 @@ public abstract class AddItemsScreen extends JFrame {
     }
 
     private JPanel createFormPanel() {
-        JPanel panel = new JPanel(new GridLayout(3, 2));
+        JPanel panel = new JPanel(new GridLayout(6, 1));
         panel.add(new JLabel("Title:"));
         panel.add(titleField);
         panel.add(new JLabel("Category:"));
