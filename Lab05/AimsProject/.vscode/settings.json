@@ -1,7 +1,19 @@
 {
-    "java.project.sourcePaths": ["src"],
+    "java.project.sourcePaths": [
+        "src"
+    ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\AimsProject\\lib\\JavaFX\\javafx.base.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\AimsProject\\lib\\JavaFX\\javafx.web.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\AimsProject\\lib\\JavaFX\\jdk.jsobject.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\AimsProject\\lib\\JavaFX\\jfx.incubator.input.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\AimsProject\\lib\\JavaFX\\javafx-swt.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\AimsProject\\lib\\JavaFX\\javafx.media.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\AimsProject\\lib\\JavaFX\\javafx.fxml.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\AimsProject\\lib\\JavaFX\\javafx.swing.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\AimsProject\\lib\\JavaFX\\jfx.incubator.richtext.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\AimsProject\\lib\\JavaFX\\javafx.controls.jar",
+        "c:\\Users\\ASUS\\Downloads\\20235822\\JAVA\\oopLAB\\Lab05\\AimsProject\\lib\\JavaFX\\javafx.graphics.jar"
     ]
 }

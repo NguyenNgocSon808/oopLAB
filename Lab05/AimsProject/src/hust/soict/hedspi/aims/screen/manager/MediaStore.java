@@ -25,7 +25,18 @@ public class MediaStore extends JPanel{
             JButton playButton = new JButton("Play"); 
 
             playButton.addActionListener(e -> {
-                JOptionPane.showMessageDialog(null, "Playing: "+media.getTitle(), "Play", JOptionPane.INFORMATION_MESSAGE);
+                try {
+                    ((Playable) media).play();
+                    JOptionPane.showMessageDialog(null, "Playing: " + media.getTitle(), "Play", JOptionPane.INFORMATION_MESSAGE);
+                } catch (hust.soict.hedspi.aims.exception.PlayerException ex) {
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("Error: ").append(ex.getMessage()).append("\n");
+                    sb.append(ex.toString()).append("\n");
+                    java.io.StringWriter sw = new java.io.StringWriter();
+                    ex.printStackTrace(new java.io.PrintWriter(sw));
+                    sb.append(sw.toString());
+                    JOptionPane.showMessageDialog(null, sb.toString(), "Play Error", JOptionPane.ERROR_MESSAGE);
+                }
             });
             container.add(playButton);
         }

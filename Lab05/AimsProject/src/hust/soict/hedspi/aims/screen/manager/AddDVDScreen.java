@@ -29,12 +29,13 @@ public class AddDVDScreen extends AddItemsScreen {
     protected void addMediaToStore(Store store) {
         String title = titleField.getText();
         String category = categoryField.getText();
-        String director = directorField.getText();
-        int length = Integer.parseInt(lengthField.getText());
         float cost = Float.parseFloat(costField.getText());
-
-        DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
-        store.addMedia(dvd);
-        JOptionPane.showMessageDialog(this, "DVD added to store!");
+        DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, cost);
+        try {
+            store.addMedia(dvd);
+            JOptionPane.showMessageDialog(this, "DVD added to store!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Failed to add DVD: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

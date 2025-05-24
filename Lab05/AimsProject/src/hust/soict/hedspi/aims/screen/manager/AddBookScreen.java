@@ -25,7 +25,11 @@ public class AddBookScreen extends AddItemsScreen {
         float cost = Float.parseFloat(costField.getText());
         // Author is not used in Book constructor by default, but field is added for extensibility
         Book book = new Book(title, category, cost);
-        store.addMedia(book);
-        JOptionPane.showMessageDialog(this, "Book added to store!");
+        try {
+            store.addMedia(book);
+            JOptionPane.showMessageDialog(this, "Book added to store!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Failed to add book: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

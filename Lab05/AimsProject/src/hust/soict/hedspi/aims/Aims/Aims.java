@@ -53,22 +53,26 @@ public class Aims {
 	    cd3.addTrack(new Track("Come Together", 259));
 	    cd3.addTrack(new Track("Something", 182));
 
-	    // Adding to store
-	    store.addMedia(dvd1);
-	    store.addMedia(dvd2);
-	    store.addMedia(dvd3);
-	    store.addMedia(dvd4);
-	    store.addMedia(dvd5);
+	    try {
+		    // Adding to store
+		    store.addMedia(dvd1);
+		    store.addMedia(dvd2);
+		    store.addMedia(dvd3);
+		    store.addMedia(dvd4);
+		    store.addMedia(dvd5);
 
-	    store.addMedia(book1);
-	    store.addMedia(book2);
-	    store.addMedia(book3);
-	    store.addMedia(book4);
-	    store.addMedia(book5);
+		    store.addMedia(book1);
+		    store.addMedia(book2);
+		    store.addMedia(book3);
+		    store.addMedia(book4);
+		    store.addMedia(book5);
 
-	    store.addMedia(cd1);
-	    store.addMedia(cd2);
-	    store.addMedia(cd3);
+		    store.addMedia(cd1);
+		    store.addMedia(cd2);
+		    store.addMedia(cd3);
+	    } catch (Exception e) {
+		    e.printStackTrace();
+	    }
     }
 
     public static void showMenu() {
@@ -159,11 +163,19 @@ public class Aims {
             int choice = getChoice(0, media instanceof Playable ? 2 : 1);
             switch (choice) {
                 case 1:
-                    cart.addMedia(media);
+                    try {
+                        cart.addMedia(media);
+                    } catch (Exception e) {
+                        System.out.println("Failed to add media to cart: " + e.getMessage());
+                    }
                     break;
                 case 2:
                     if (media instanceof Playable) {
-                        ((Playable) media).play();
+                        try {
+                            ((Playable) media).play();
+                        } catch (hust.soict.hedspi.aims.exception.PlayerException e) {
+                            System.out.println("Play error: " + e.getMessage());
+                        }
                     }
                     break;
                 case 0:
@@ -178,7 +190,11 @@ public class Aims {
         Media media = store.searchByTitle(title);
 
         if (media != null) {
-            cart.addMedia(media);
+            try {
+                cart.addMedia(media);
+            } catch (Exception e) {
+                System.out.println("Failed to add media to cart: " + e.getMessage());
+            }
         } else {
             System.out.println("Media not found.");
         }
@@ -190,7 +206,11 @@ public class Aims {
         Media media = store.searchByTitle(title);
 
         if (media != null && media instanceof Playable) {
-            ((Playable) media).play();
+            try {
+                ((Playable) media).play();
+            } catch (hust.soict.hedspi.aims.exception.PlayerException e) {
+                System.out.println("Play error: " + e.getMessage());
+            }
         } else {
             System.out.println("Media not found or not playable.");
         }
@@ -246,7 +266,11 @@ public class Aims {
                 scanner.nextLine();
 
                 DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
-                store.addMedia(dvd);
+                try {
+                    store.addMedia(dvd);
+                } catch (Exception e) {
+                    System.out.println("Failed to add DVD: " + e.getMessage());
+                }
                 break;
             case 2: // Book
                 Book book = new Book(title, category, cost);
@@ -257,7 +281,11 @@ public class Aims {
                     System.out.print("Author " + (i+1) + ": ");
                     book.addAuthor(scanner.nextLine());
                 }
-                store.addMedia(book);
+                try {
+                    store.addMedia(book);
+                } catch (Exception e) {
+                    System.out.println("Failed to add Book: " + e.getMessage());
+                }
                 break;
             case 3: // CD
                 System.out.print("Artist: ");
@@ -280,7 +308,11 @@ public class Aims {
                     scanner.nextLine();
                     cd.addTrack(new Track(trackTitle, trackLength));
                 }
-                store.addMedia(cd);
+                try {
+                    store.addMedia(cd);
+                } catch (Exception e) {
+                    System.out.println("Failed to add CD: " + e.getMessage());
+                }
                 break;
         }
         System.out.println("Media added to store.");
@@ -399,7 +431,11 @@ public class Aims {
         Media media = cart.searchByTitle(title);
 
         if (media != null && media instanceof Playable) {
-            ((Playable) media).play();
+            try {
+                ((Playable) media).play();
+            } catch (hust.soict.hedspi.aims.exception.PlayerException e) {
+                System.out.println("Play error: " + e.getMessage());
+            }
         } else {
             System.out.println("Media not found or not playable.");
         }

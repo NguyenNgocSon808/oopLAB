@@ -14,31 +14,24 @@ public abstract class Media {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
-
     public String getCategory() {
         return category;
     }
-
     public void setCategory(String category) {
         this.category = category;
     }
-
     public float getCost() {
         return cost;
     }
-
     public void setCost(float cost) {
         this.cost = cost;
     }
@@ -68,12 +61,20 @@ public abstract class Media {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-
+        if (obj == null) return false;
+        if (!(obj instanceof Media)) return false;
         Media other = (Media) obj;
-        return this.title != null && this.title.equals(other.title)
-            && ((this.getCategory() == null && other.getCategory() == null) || (this.getCategory() != null && this.getCategory().equals(other.getCategory())))
-            && Float.compare(other.getCost(), this.getCost()) == 0;
+        if (this.getTitle() == null || other.getTitle() == null) return false;
+        return this.getTitle().equals(other.getTitle()) && Float.compare(this.getCost(), other.getCost()) == 0;
+    }
+
+    public int compareTo(Object obj) {
+        if (obj == null) throw new NullPointerException("Compared object is null");
+        if (!(obj instanceof Media)) throw new ClassCastException("Object is not a Media");
+        Media other = (Media) obj;
+        int titleCompare = (this.getTitle() == null ? (other.getTitle() == null ? 0 : -1) : (other.getTitle() == null ? 1 : this.getTitle().compareTo(other.getTitle())));
+        if (titleCompare != 0) return titleCompare;
+        return Float.compare(this.getCost(), other.getCost());
     }
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();

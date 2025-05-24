@@ -13,11 +13,15 @@ public class StoreTest {
         DigitalVideoDisc dvd4 = new DigitalVideoDisc("Inception", "Science Fiction", "Christopher Nolan", 148, 29.99f);
         DigitalVideoDisc dvd5 = new DigitalVideoDisc("The Godfather", "Crime", "Francis Ford Coppola", 175, 22.50f);
 
-        store.addMedia(dvd1);
-        store.addMedia(dvd2);
-        store.addMedia(dvd3);
-        store.addMedia(dvd4);
-        store.addMedia(dvd5);
+        try {
+            store.addMedia(dvd1);
+            store.addMedia(dvd2);
+            store.addMedia(dvd3);
+            store.addMedia(dvd4);
+            store.addMedia(dvd5);
+        } catch (Exception e) {
+            System.out.println("Failed to add media: " + e.getMessage());
+        }
 
         store.print();
 
