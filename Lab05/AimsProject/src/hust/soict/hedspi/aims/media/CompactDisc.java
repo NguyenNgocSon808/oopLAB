@@ -51,10 +51,20 @@ public class CompactDisc extends Disc implements Playable{
         return Length;
     }
     @Override
-    public void play(){
+    public void play() throws hust.soict.hedspi.aims.exception.PlayerException {
+        if (tracks.isEmpty()) {
+            throw new hust.soict.hedspi.aims.exception.PlayerException("ERROR: CD has no tracks!");
+        }
         System.out.println("Playing CD: " + this.getTitle());
         for(Track track : tracks){
-            track.play();
+            try {
+                track.play();
+            } catch (hust.soict.hedspi.aims.exception.PlayerException e) {
+                System.err.println("Track Play Exception:");
+                System.err.println("Message: " + e.getMessage());
+                System.err.println("Exception: " + e.toString());
+                e.printStackTrace();
+            }
         }
     }
     @Override

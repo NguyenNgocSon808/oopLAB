@@ -32,13 +32,13 @@ public class AddCDScreen extends AddItemsScreen {
     protected void addMediaToStore(Store store) {
         String title = titleField.getText();
         String category = categoryField.getText();
-        String artist = artistField.getText();
-        String director = directorField.getText();
-        int length = Integer.parseInt(lengthField.getText());
         float cost = Float.parseFloat(costField.getText());
-
-        CompactDisc cd = new CompactDisc(title, category, director, length, cost);
-        store.addMedia(cd);
-        JOptionPane.showMessageDialog(this, "CD added to store!");
+        CompactDisc cd = new CompactDisc(title, category, cost);
+        try {
+            store.addMedia(cd);
+            JOptionPane.showMessageDialog(this, "CD added to store!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Failed to add CD: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
