@@ -1,59 +1,67 @@
 package hust.soict.hedspi.aims.store;
 
 import java.util.ArrayList;
-
-import javax.naming.LimitExceededException;
-
-import hust.soict.hedspi.aims.media.*;
+import hust.soict.hedspi.aims.media.Media;
 
 public class Store {
     private ArrayList<Media> itemsInStore = new ArrayList<Media>();
-    public static final int MAX_NUMBERS_ORDERED = 20;
-    
-    public void addMedia(Media media) throws LimitExceededException {
-        if(itemsInStore.size() < MAX_NUMBERS_ORDERED) {
-            if(itemsInStore.contains(media)){
-                System.out.println("This media already exists!");
-            }else{
-                itemsInStore.add(media);
-            }
+
+    public void addMedia(Media media) {
+        if (itemsInStore.contains(media)) {
+            System.out.println("San pham da ton tai trong cua hang!");
         } else {
-            throw new LimitExceededException("ERROR: The number of media has reached its limit");
+            itemsInStore.add(media);
+            System.out.println("Them thanh cong san pham co ten: " + media.getTitle());
         }
     }
-    public void removeMedia(Media media){
-        if(itemsInStore.contains(media)){
+
+    public void removeMedia(Media media) {
+        if (itemsInStore.contains(media)) {
             itemsInStore.remove(media);
-        }else{
-            System.out.println("Media not found");
+            System.out.println("Da xoa: " + media.getTitle());
+        } else {
+            System.out.println("San pham khong ton tai!");
         }
     }
-    public void print(){
-        System.out.println("*********************************STORE**********************************");
 
-        for(Media media : itemsInStore){
-            System.out.println(media.toString());
+    public void printStore() {
+        System.out.println("********** STORE **********");
+        for (int i = 0; i < itemsInStore.size(); i++) {
+            Media media = itemsInStore.get(i);
+            System.out.println((i + 1) + ". " + media.toString());
         }
-
-        System.out.println("************************************************************************");        
+        System.out.println("***************************");
     }
-    public Media searchByTitle(String title){
-        for(Media media : itemsInStore){
-            if(media.isMatch(title)){
+
+    public void print() {
+        System.out.println("********** STORE **********");
+        for (int i = 0; i < itemsInStore.size(); i++) {
+            Media media = itemsInStore.get(i);
+            System.out.println((i + 1) + ". " + media.toString());
+        }
+        System.out.println("***************************");
+    }
+
+    public ArrayList<Media> getItemsInStore() {
+        return itemsInStore;
+    }
+    
+    public Media searchByTitle(String title) {
+        for (Media media : itemsInStore) { 
+            if (media.getTitle().equalsIgnoreCase(title)) {
                 return media;
             }
         }
-        return null;
+        return null; // không tìm thấy
     }
-    public Media searchByID(int ID){
-        for(Media media : itemsInStore){
-            if(media.getId() == ID){
+    public Media searchById(int id) {
+        for (Media media : itemsInStore) {
+            if (media.getId() == id) {
                 return media;
             }
         }
-        return null;
+        return null; // không tìm thấy
     }
-    public ArrayList<Media> getItemsInStore(){
-        return this.itemsInStore;
-    }
+    
+    
 }

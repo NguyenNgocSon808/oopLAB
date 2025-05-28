@@ -1,89 +1,100 @@
 package hust.soict.hedspi.aims.cart;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
-import javax.naming.LimitExceededException;
-
-import hust.soict.hedspi.aims.media.*;
+import hust.soict.hedspi.aims.media.Media;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Cart {
-    private ObservableList<Media> itemsOrdered = javafx.collections.FXCollections.observableArrayList();
-    public static final int MAX_NUMBERS_ORDERED = 20;
-    
-    public void addMedia(Media media) throws LimitExceededException {
-        if(itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
-            if(itemsOrdered.contains(media)){
-                System.out.println("This media already exists!");
-            }else{
-                itemsOrdered.add(media);
-            }
+	private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
+	
+    public void addMedia(Media media) {
+        if (itemsOrdered.contains(media)) {
+            System.out.println("San pham da co san trong gio hang!");
         } else {
-            throw new LimitExceededException("ERROR: The number of media has reached its limit");
+            itemsOrdered.add(media);
+            System.out.println("Added: " + media.getTitle());
         }
     }
-    public void removeMedia(Media media){
-        if(itemsOrdered.contains(media)){
+
+    public void removeMedia(Media media) {
+        if (itemsOrdered.contains(media)) {
             itemsOrdered.remove(media);
-        }else{
-            System.out.println("Media not found");
+            System.out.println("Da xoa san pham: " + media.getTitle());
+        } else {
+            System.out.println("Khong ton tai san pham nay!");
         }
     }
-    public float TotalCost(){
+
+    public float totalCost() {
         float total = 0;
-        for(Media media : itemsOrdered){
-            total += media.getCost();
-        }
-        return total;
-    }
-
-
-    public void print(){
-        System.out.println("**********************************CART**********************************");
-
-        for(Media media : itemsOrdered){
-            System.out.println(media.toString());
-        }
-
-        System.out.println("************************************************************************");        
-    }
-    public Media searchByTitle(String title){
-        for(Media media : itemsOrdered){
-            if(media.isMatch(title)){
-                return media;
-            }
-        }
-        return null;
-    }
-    public Media searchByID(int ID){
-        for(Media media : itemsOrdered){
-            if(media.getId() == ID){
-                return media;
-            }
-        }
-        return null;
-    }
-    public void sortByCost(){
-        Collections.sort(itemsOrdered, Media.COMPARE_BY_COST_TITLE);
-    }
-    public void sortByTitle(){
-        Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
-    }
-    public void emptyCart() {
-        itemsOrdered.clear();
-        System.out.println("The cart has been emptied.");
-    }   
-    public ObservableList<Media> getItemsOrdered() {
-        return itemsOrdered;
-    }
-    public int totalCost() {
-        int total = 0;
         for (Media media : itemsOrdered) {
             total += media.getCost();
         }
         return total;
     }
+	
+    public void printCart() {
+        System.out.println("********** CART **********");
+        for (int i = 0; i < itemsOrdered.size(); i++) {
+            Media media = itemsOrdered.get(i);
+            System.out.println((i + 1) + ". " + media.toString());
+        }
+        System.out.printf("Total cost: %.2f\n", totalCost());
+        System.out.println("***************************");
+    }
+
+    public void print() {
+        System.out.println("********** CART **********");
+        for (int i = 0; i < itemsOrdered.size(); i++) {
+            Media media = itemsOrdered.get(i);
+            System.out.println((i + 1) + ". " + media.toString());
+        }
+        System.out.printf("Total cost: %.2f\n", totalCost());
+        System.out.println("***************************");
+    }
+
+    public ObservableList<Media> getItemsOrdered() {
+        return itemsOrdered;
+    }
+
+    
+    public void sortByTitle() {
+        Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+    }
+    public void sortByCost() {
+        Collections.sort(itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+    }
+    public Media searchByID(int id) {
+        for (Media media : itemsOrdered) {
+            if (media.getId() == id) {
+                return media;
+            }
+        }
+        return null;
+    }
+    public Media searchByTitle(String title) {
+        for (Media media : itemsOrdered) {
+            if (media.getTitle().equalsIgnoreCase(title)) {
+                return media;
+            }
+        }
+        return null; // không tìm thấy
+    }
+    
+    public Media searchById(int id) {
+        for (Media media : itemsOrdered) {
+            if (media.getId() == id) {
+                return media;
+            }
+        }
+        return null; // không tìm thấy
+    }
     public void clear() {
         itemsOrdered.clear();
     }
+
+    
 }

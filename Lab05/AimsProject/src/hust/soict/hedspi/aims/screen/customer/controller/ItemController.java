@@ -1,7 +1,5 @@
 package hust.soict.hedspi.aims.screen.customer.controller;
 
-import javax.naming.LimitExceededException;
-
 import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
@@ -37,11 +35,11 @@ public class ItemController {
     }
 
     @FXML
-    void btnAddToCartClicked(ActionEvent event) throws LimitExceededException {
+    void btnAddToCartPressed(ActionEvent event) {
         if (this.media != null && this.cart != null) {
             cart.addMedia(this.media);
             System.out.println("Added " + this.media.getTitle() + " to cart from ItemController.");
-            
+
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Thành công");
             alert.setHeaderText(null);
@@ -59,19 +57,21 @@ public class ItemController {
     }
 
     @FXML
-    void btnPlayClicked(ActionEvent event) {
+    void btnPlayPressed(ActionEvent event) {
         if (this.media instanceof Playable) {
             try {
-                ((Playable) this.media).play();
+                ((Playable) this.media).play(); // Gọi phương thức play(), có thể ném PlayerException
+                // Nếu play thành công, có thể hiển thị thông báo
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Đang phát Media");
                 alert.setHeaderText(null);
                 alert.setContentText("Đang phát: " + this.media.getTitle());
                 alert.showAndWait();
             } catch (PlayerException e) {
+                // Bắt PlayerException và hiển thị thông tin lỗi
                 System.err.println("PlayerException caught in ItemController: " + e.getMessage());
                 System.err.println("Exception toString(): " + e.toString());
-                e.printStackTrace(); 
+                e.printStackTrace(); // In dấu vết ngăn xếp ra console
 
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Lỗi Phát Media");
@@ -95,17 +95,11 @@ public class ItemController {
         lblCost.setText(String.format("%.2f $", media.getCost()));
         if (media instanceof Playable) {
             btnPlay.setVisible(true);
-            btnPlay.setManaged(true); 
+            btnPlay.setManaged(true); // Đảm bảo nút chiếm không gian
         } else {
             btnPlay.setVisible(false);
-            btnPlay.setManaged(false); 
-            HBox.setMargin(btnAddToCart, new Insets(0, 0, 0, 60)); 
+            btnPlay.setManaged(false); // Đảm bảo nút không chiếm không gian khi ẩn
+            HBox.setMargin(btnAddToCart, new Insets(0, 0, 0, 60)); // Điều chỉnh layout nếu nút play ẩn
         }
-    }
-
-    @FXML
-    public void initialize() {
-        btnPlay.setVisible(false); // Đã di chuyển logic này vào setData()
-        btnPlay.setManaged(false);
     }
 }

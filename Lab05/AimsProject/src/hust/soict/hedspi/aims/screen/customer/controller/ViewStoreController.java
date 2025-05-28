@@ -5,21 +5,23 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import hust.soict.hedspi.aims.store.Store;
-import hust.soict.hedspi.aims.cart.Cart; 
+import hust.soict.hedspi.aims.cart.Cart; // Import Cart
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
-import javafx.scene.Parent; 
-import javafx.scene.Scene;  
-import javafx.scene.control.Button; 
-import javafx.stage.Stage;  
+import javafx.scene.Parent; // Cho loader.load()
+import javafx.scene.Scene;  // Để tạo Scene mới
+import javafx.scene.control.Button; // Để lấy Stage từ event source
+import javafx.stage.Stage;  // Để thay đổi Stage
 
 public class ViewStoreController {
 
 	private Store store;
-	private Cart cart; 
+	private Cart cart;
+
 	public ViewStoreController (Store store, Cart cart) {
 		this.store = store;
 		this.cart = cart;
@@ -39,8 +41,9 @@ public class ViewStoreController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Cart.fxml"));
             loader.setControllerFactory(c -> new CartController(store, cart));
-            Parent root = loader.load(); 
+            Parent root = loader.load();
             Stage stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("Cart Screen"); 
@@ -54,7 +57,7 @@ public class ViewStoreController {
 
     @FXML
     public void initialize() {
-        final String ITEM_FXML_FILE_PATH = "screen/customer/view/Item.fxml";
+        final String ITEM_FXML_FILE_PATH = "C:/Users/ASUS/Downloads/20235822/JAVA/oopLAB/Lab05/AimsProject/src/hust/soict/hedspi/aims/screen/customer/view/Item.fxml";
         int column = 0;
         int row = 1;
 

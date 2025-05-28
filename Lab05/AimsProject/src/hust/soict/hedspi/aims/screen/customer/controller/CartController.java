@@ -1,10 +1,10 @@
 package hust.soict.hedspi.aims.screen.customer.controller;
 
 import hust.soict.hedspi.aims.cart.Cart;
-import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.store.Store;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
+import hust.soict.hedspi.aims.exception.PlayerException; // Import PlayerException
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -26,6 +26,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class CartController {
@@ -125,16 +126,18 @@ public class CartController {
         Media selectedMedia = tblMedia.getSelectionModel().getSelectedItem();
         if (selectedMedia instanceof Playable) {
             try {
-                ((Playable) selectedMedia).play(); 
+                ((Playable) selectedMedia).play(); // Gọi phương thức play(), có thể ném PlayerException
+                // Nếu play thành công, có thể hiển thị thông báo
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Đang phát Media");
                 alert.setHeaderText(null);
                 alert.setContentText("Đang phát: " + selectedMedia.getTitle());
                 alert.showAndWait();
             } catch (PlayerException e) {
+                // Bắt PlayerException và hiển thị thông tin lỗi
                 System.err.println("PlayerException caught in CartController: " + e.getMessage());
                 System.err.println("Exception toString(): " + e.toString());
-                e.printStackTrace(); 
+                e.printStackTrace(); // In dấu vết ngăn xếp ra console
 
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Lỗi Phát Media");
@@ -197,7 +200,8 @@ public class CartController {
     @FXML
     void btnViewStorePressed(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Store.fxml"));
+            // Use classpath-relative path for FXML resource
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/hust/soict/hedspi/aims/screen/customer/view/Store.fxml"));
             loader.setControllerFactory(c -> new hust.soict.hedspi.aims.screen.customer.controller.ViewStoreController(store, cart));
             Parent root = loader.load();
 
@@ -228,9 +232,11 @@ public class CartController {
             return;
         }
 
+        // Thực hiện đặt hàng: xóa tất cả các mục trong giỏ hàng
         cart.clear();
-        updateTotalCost();
+        updateTotalCost(); // Cập nhật lại tổng chi phí (về 0)
 
+        // Hiển thị thông báo đặt hàng thành công
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Đặt hàng thành công");
         alert.setHeaderText(null);

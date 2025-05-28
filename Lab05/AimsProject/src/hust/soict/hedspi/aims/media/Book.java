@@ -33,4 +33,13 @@ public class Book extends Media{
         " - " + this.getCategory() + 
         ": " + this.getCost() + ".");
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (!(obj instanceof Book)) return false;
+        Book other = (Book) obj;
+        if (this.getTitle() == null || other.getTitle() == null) return false;
+        return this.getTitle().equals(other.getTitle()) && Float.compare(this.getCost(), other.getCost()) == 0;
+    }
 }

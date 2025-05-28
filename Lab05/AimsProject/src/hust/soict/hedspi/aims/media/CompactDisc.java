@@ -42,13 +42,12 @@ public class CompactDisc extends Disc implements Playable{
             System.out.println("Track \"" + track.getTitle() + "\" is not in the CD.");
         }
     }
-    @Override
     public int getLength(){
-        int Length = 0;
+        int totalLength = 0;
         for (Track track : tracks) {
-            Length += track.getLength();
+            totalLength += track.getLength();
         }
-        return Length;
+        return totalLength;
     }
     @Override
     public void play() throws hust.soict.hedspi.aims.exception.PlayerException {
@@ -75,5 +74,14 @@ public class CompactDisc extends Disc implements Playable{
         " - " + this.getLength() + 
         " - " + this.getArtist() +
         ": " + this.getCost() + ".");
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (!(obj instanceof CompactDisc)) return false;
+        CompactDisc other = (CompactDisc) obj;
+        if (this.getTitle() == null || other.getTitle() == null) return false;
+        return this.getTitle().equals(other.getTitle()) && Float.compare(this.getCost(), other.getCost()) == 0;
     }
 }
