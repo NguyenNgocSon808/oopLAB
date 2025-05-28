@@ -32,11 +32,11 @@ public class Track implements Playable{
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-
+        if (obj == null) return false;
+        if (!(obj instanceof Track)) return false;
         Track other = (Track) obj;
-        return this.length == other.length &&
-            this.title != null && this.title.equals(other.title);
+        if (this.getTitle() == null || other.getTitle() == null) return false;
+        return this.getTitle().equals(other.getTitle()) && this.getLength() == other.getLength();
     }
 
 }

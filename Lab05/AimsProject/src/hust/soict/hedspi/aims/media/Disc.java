@@ -34,4 +34,13 @@ public class Disc extends Media {
     public String toString(){
         return null;
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (!(obj instanceof Disc)) return false;
+        Disc other = (Disc) obj;
+        if (this.getTitle() == null || other.getTitle() == null) return false;
+        return this.getTitle().equals(other.getTitle()) && Float.compare(this.getCost(), other.getCost()) == 0;
+    }
 }

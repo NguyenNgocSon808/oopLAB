@@ -41,7 +41,6 @@ public class DigitalVideoDisc extends Disc implements Playable {
         if (obj == null) return false;
         if (!(obj instanceof DigitalVideoDisc)) return false;
         DigitalVideoDisc other = (DigitalVideoDisc) obj;
-        // Null-safe title comparison
         if (this.getTitle() == null || other.getTitle() == null) return false;
         return this.getTitle().equals(other.getTitle()) && Float.compare(this.getCost(), other.getCost()) == 0;
     }

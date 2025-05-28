@@ -1,4 +1,4 @@
-package hust.soict.hedspi.aims.exception;
+package hust.soict.hedspi.aims.exception; // Ví dụ: package hust.soict.hedspi.aims.exception
 
 public class PlayerException extends Exception {
     public PlayerException() {

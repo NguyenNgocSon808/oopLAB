@@ -294,7 +294,9 @@ public class Aims {
                 String cdDirector = scanner.nextLine();
                 System.out.print("Length: ");
                 int leng = scanner.nextInt();
+                scanner.nextLine();
 
+                // Fix constructor argument order to match CompactDisc definition
                 CompactDisc cd = new CompactDisc(title, category, cdDirector, artist, leng, cost);
 
                 System.out.print("Number of tracks: ");
